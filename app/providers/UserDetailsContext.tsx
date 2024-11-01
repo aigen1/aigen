@@ -49,7 +49,7 @@ export const UserDetailsProvider = ({ children }: { children?: ReactNode }): Rea
 
 	const [loading, setLoading] = useState(false);
 
-	const { user, authenticated, logout } = usePrivy();
+	const { user, authenticated, logout, ready } = usePrivy();
 
 	const signup = useCallback(
 		async (userID: string, address?: string, referralCode?: string) => {
@@ -188,14 +188,12 @@ export const UserDetailsProvider = ({ children }: { children?: ReactNode }): Rea
 		// // getSharedSafeAddressData();
 		// return;
 		// }
-		if (authenticated && !loading) {
+		if (authenticated && ready && !loading) {
 			console.log('wallet changed');
 			connectAddress(user?.id || '', user?.wallet?.address);
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, []);
-
-	useEffect(() => {}, []);
+	}, [ready]);
 
 	const value = useMemo(
 		() => ({
