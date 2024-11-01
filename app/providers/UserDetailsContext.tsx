@@ -10,7 +10,6 @@ import { usePrivy, useWallets } from '@privy-io/react-auth';
 import { IUserContext } from '@/global/types';
 import { toast } from 'react-toastify';
 import { loginEth } from '@/backend-calls/loginEth';
-import { useRouter } from 'next/navigation';
 import { signupEth } from '@/backend-calls/signupEth';
 import { useOnboardingContext } from './OnboardingContext';
 
@@ -42,8 +41,6 @@ export function useGlobalUserDetailsContext() {
 export const UserDetailsProvider = ({ children }: { children?: ReactNode }): ReactNode => {
 	const [userDetailsContextState, setUserDetailsContextState] = useState(initialUserDetailsContext);
 	const { wallets } = useWallets();
-
-	const navigate = useRouter();
 
 	const { onStart } = useOnboardingContext();
 
@@ -83,7 +80,6 @@ export const UserDetailsProvider = ({ children }: { children?: ReactNode }): Rea
 						waiting: userData.waiting
 					});
 					toast('Waitlisted!', { type: 'success' });
-					navigate.push('/signup/refCode');
 				} else {
 					setUserDetailsContextState((prevState) => {
 						return {
@@ -145,7 +141,6 @@ export const UserDetailsProvider = ({ children }: { children?: ReactNode }): Rea
 							waiting: userData.waiting
 						});
 						toast('User is in Waitlist, Please provide a Referral Code.', { type: 'warning' });
-						navigate.push('/signup/refCode');
 					} else {
 						logout();
 						setUserDetailsContextState(initialUserDetailsContext);

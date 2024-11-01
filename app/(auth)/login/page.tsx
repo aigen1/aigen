@@ -1,6 +1,7 @@
 'use client';
 
 import LoginForm from '@/Components/LoginForm';
+import RefCodeForm from '@/Components/SignupForm/RefCodeForm';
 import { useGlobalUserDetailsContext } from '@/providers/UserDetailsContext';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
@@ -13,10 +14,8 @@ const LoginPage = () => {
 	useEffect(() => {
 		if (userId) {
 			router.push('/');
-		} else if (address && waiting) {
-			router.push('/signup/refCode');
 		}
-	}, [address, router, userId, waiting]);
+	}, [router, userId]);
 
 	return (
 		<section className='flex-1 flex justify-center items-start pt-[80px]'>
@@ -38,9 +37,7 @@ const LoginPage = () => {
 					<span />
 				</div>
 				<div className='pt-6 pb-8 px-12'>
-					<Suspense fallback={<div>Loading...</div>}>
-						<LoginForm />
-					</Suspense>
+					<Suspense fallback={<div>Loading...</div>}>{address && waiting ? <RefCodeForm /> : <LoginForm />}</Suspense>
 				</div>
 			</div>
 		</section>

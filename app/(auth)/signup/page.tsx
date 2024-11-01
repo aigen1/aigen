@@ -1,6 +1,7 @@
 'use client';
 
 import SignupForm from '@/Components/SignupForm';
+import RefCodeForm from '@/Components/SignupForm/RefCodeForm';
 import { useGlobalUserDetailsContext } from '@/providers/UserDetailsContext';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
@@ -36,9 +37,7 @@ const SignupPage = () => {
 					<span />
 				</div>
 				<div className='pt-6 pb-8 px-12'>
-					<Suspense fallback={<div>Loading...</div>}>
-						<SignupForm />
-					</Suspense>
+					<Suspense fallback={<div>Loading...</div>}>{address && waiting ? <RefCodeForm /> : <SignupForm />}</Suspense>
 				</div>
 			</div>
 		</section>
