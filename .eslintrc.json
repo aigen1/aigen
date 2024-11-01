@@ -68,37 +68,37 @@
 		"import/no-extraneous-dependencies": "off",
 		"react/no-array-index-key": "off",
 		"jsx-a11y/label-has-associated-control": "off",
-		"@typescript-eslint/naming-convention": [
-			"error",
-			{
-				"selector": "default",
-				"format": [
-					"camelCase",
-					"snake_case",
-					"UPPER_CASE",
-					"PascalCase"
-				],
-				"leadingUnderscore": "allow",
-				"trailingUnderscore": "allow"
-			},
-			{
-				"selector": "variable",
-				"format": [
-					"camelCase",
-					"UPPER_CASE",
-					"snake_case",
-					"PascalCase"
-				],
-				"leadingUnderscore": "allow",
-				"trailingUnderscore": "allow"
-			},
-			{
-				"selector": "typeLike",
-				"format": [
-					"PascalCase"
-				]
-			}
-		],
+		// "@typescript-eslint/naming-convention": [
+		// 	"error",
+		// 	{
+		// 		"selector": "default",
+		// 		"format": [
+		// 			"camelCase",
+		// 			"snake_case",
+		// 			"UPPER_CASE",
+		// 			"PascalCase"
+		// 		],
+		// 		"leadingUnderscore": "allow",
+		// 		"trailingUnderscore": "allow"
+		// 	},
+		// 	{
+		// 		"selector": "variable",
+		// 		"format": [
+		// 			"camelCase",
+		// 			"UPPER_CASE",
+		// 			"snake_case",
+		// 			"PascalCase"
+		// 		],
+		// 		"leadingUnderscore": "allow",
+		// 		"trailingUnderscore": "allow"
+		// 	},
+		// 	{
+		// 		"selector": "typeLike",
+		// 		"format": [
+		// 			"PascalCase"
+		// 		]
+		// 	}
+		// ],
 		"arrow-spacing": [
 			"warn",
 			{

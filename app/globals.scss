@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --bg_grey: #E4E4E4;
+    --border_grey: #E3E6EA;
+    --primary_green: #C8FF04;
+    --primary_grey: #202020;
+    --primary_orange: #F67304;
+    --secondary_orange: #FEEDDE;
+    --secondary_green: #333E0B;
+    --tab_bg_orange: rgba(246,115,4,0.17);
+    --text_black: #161B33;
+    --text_chat: #1B2559;
+    --text_deep_blue: #19213D;
+    --text_grey: #767B81;
+    --text_secondary: #8B8B8B;
+    --success: #65C21B;
+    --primary_brown: #A65A14;
+}
+
+body,
+main,
+header,
+footer {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+.background {
+  --dot-bg: #282828;
+  --dot-color: #444444;
+  --dot-size: 3px;
+  --dot-space: 22px;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background:
+  linear-gradient(90deg, var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
+  linear-gradient(var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
+  var(--dot-color);
+  box-shadow: inset 0px 0px 30px 0px black;
+}
+
+.navbar {
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%), linear-gradient(0deg, #282828 0%, #282828 100%), #121212;
+}

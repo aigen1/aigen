@@ -1,0 +1,23 @@
+.scroll-btn::before {
+    content: '';
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 5px;
+    height: 8px;
+    width: 8px;
+    border-radius: 50%;
+    background-color: #777777;
+    animation: move-down 2s infinite;
+}
+
+@keyframes move-down {
+    80% {
+        opacity: 0.5;
+    }
+    100%{
+        transform: translateY(15px);
+        opacity: 1;
+    }
+}

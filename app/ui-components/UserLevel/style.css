@@ -1,0 +1,18 @@
+.level-btn {
+    position: relative;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.00) 1.75%, rgba(255, 255, 255, 0.14) 97.92%), #282828;
+}
+
+.level-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+    margin: -2px;
+    border-radius: inherit;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.20) 1.75%, rgba(255, 255, 255, 0.14) 97.92%), #282828;
+}
+

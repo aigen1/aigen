@@ -1,0 +1,15 @@
+.blink {
+    animation: blinking 1s linear infinite;
+}
+
+@keyframes blinking {
+    25% {
+        opacity: 0.25;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 0.25;
+    }
+}

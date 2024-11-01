@@ -1,0 +1,32 @@
+/* eslint-disable sort-keys */
+// eslint-disable-next-line import/prefer-default-export
+export const responseMessages = {
+	missing_user_signatory: 'User address should be in the list of signatories.',
+	missing_headers: 'Missing headers.',
+	invalid_headers: 'Invalid headers.',
+	missing_params: 'Missing parameters.',
+	invalid_params: 'Invalid parameters passed to the function call.',
+	invalid_signature: 'Invalid signature.',
+	invalid_user: 'Invalid user.',
+	invalid_network: 'Invalid network.',
+	invalid_request: 'Invalid request.',
+	unauthorised: 'Unauthorised.',
+	internal: 'Internal error occured.',
+	min_singatories: 'Minimum number of signatories is 2.',
+	invalid_organization: 'invalid organization',
+	invalid_threshold: 'Threshold should be a number less than or equal to the number of signatories.',
+	onchain_multisig_fetch_error: 'Error while fetching multisig from chain.',
+	invalid_page: 'Min. value for page is 1.',
+	transfers_fetch_error: 'Error while fetching transfers.',
+	queue_fetch_error: 'Error while fetching queue.',
+	assets_fetch_error: 'Error while fetching assets.',
+	success: 'Success',
+	invalid_2fa_code: 'Invalid 2FA code.',
+	invalid_2fa_token: 'Invalid 2FA token.',
+	two_factor_auth_not_init: '2FA not initialised.',
+	address_not_registered: 'Address not registered.',
+	tfa_token_expired: '2FA token expired.',
+	address_not_in_db: 'no user with this address',
+	address_already_exists: 'User Exists, Please Login.',
+	invalid_invoice_id: 'Invalid invoice id;'
+};

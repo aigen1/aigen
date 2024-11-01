@@ -1,0 +1,11 @@
+.step:not(:first-child)::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    border-top: 3px dotted #BDBDBD;
+    @apply top-1/3 right-2/4 -translate-y-2/4;
+}
+
+.active:not(:first-child)::before {
+    border-top: 3px dotted #F67304;
+}
