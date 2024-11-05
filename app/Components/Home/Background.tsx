@@ -58,6 +58,11 @@ const Background = ({
 				>
 					<span className='font-surfquest text-8xl text-white [text-shadow:_0_0_5px] leading-none'>{points}</span>
 					<p className='font-recharge text-2xl text-white'>Points</p>
+					<div className='mt-2 flex items-center gap-x-6 w-full'>
+						<p className='flex-1 p-1.5 bg-stroke_black rounded-2xl -ml-4' />
+						<p className='p-1.5 bg-stroke_black rounded-2xl w-[50%]' />
+						<p className='flex-1 p-1.5 bg-stroke_black rounded-2xl -mr-4' />
+					</div>
 				</motion.div>
 			</motion.div>
 		</div>

@@ -20,7 +20,7 @@ export const initialUserDetailsContext: IUserContext = {
 	email: '',
 	points: 0,
 	badges: 0,
-	level: 1,
+	level: 0,
 	referralCodes: [],
 	created_at: new Date(),
 	userLoading: false,

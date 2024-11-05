@@ -28,7 +28,7 @@ const PrimaryButton = ({
 			size={size}
 			disabled={disabled}
 			onClick={onClick}
-			className={`primary-btn bg-primary_orange ${disabled && 'opacity-60 cursor-not-allowed'} rounded-xl text-white text-xs font-bold font-recharge px-8 ${className}`}
+			className={`primary-btn bg-primary_orange ${disabled && 'opacity-60 cursor-not-allowed'} rounded-xl text-white text-sm font-bold font-recharge px-8 ${className}`}
 			startContent={icon}
 		>
 			{children}

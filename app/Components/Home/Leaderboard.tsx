@@ -1,12 +1,13 @@
 import { getLeaderboard } from '@/backend-calls/getLeaderboard';
 import { ILeaderboard } from '@/global/types';
 import { useGlobalUserDetailsContext } from '@/providers/UserDetailsContext';
+import UserLoggedOut from '@/ui-components/UserLoggedOut';
 import { Skeleton } from '@nextui-org/skeleton';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
 const Leaderboard = () => {
-	const { address, userLoading } = useGlobalUserDetailsContext();
+	const { address, userLoading, userId } = useGlobalUserDetailsContext();
 
 	const [leaderboard, setLeaderboard] = useState<ILeaderboard[]>([]);
 	const [loading, setLoading] = useState<boolean>(false);
@@ -61,7 +62,7 @@ const Leaderboard = () => {
 							</div>
 						</div>
 					</>
-				) : (
+				) : userId ? (
 					leaderboard.map((user, i) => (
 						<div className='px-8 py-5 flex items-center gap-x-4 bg-white rounded-2xl [box-shadow:_0px_0px_1px_0px_rgba(29,_33,_45,_0.20),_0px_0px_2px_0px_rgba(29,_33,_45,_0.08),_0px_3px_4px_0px_rgba(29,_33,_45,_0.12)]'>
 							<div className='text-white px-2 py-[2px] text-xs bg-primary_brown rounded-md'>{i + 1}</div>
@@ -77,6 +78,8 @@ const Leaderboard = () => {
 							<span className='text-[#5D6C87] text-2xl font-recharge'>Lv {user.level}</span>
 						</div>
 					))
+				) : (
+					<UserLoggedOut />
 				)}
 			</div>
 		</div>

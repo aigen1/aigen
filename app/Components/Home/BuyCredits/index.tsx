@@ -28,7 +28,7 @@ export interface ICreditPlan {
 
 const BuyCredits = () => {
 	const { isOpen, onOpen, onOpenChange, onClose: closeModal } = useDisclosure();
-	const { address, setUserDetailsContextState } = useGlobalUserDetailsContext();
+	const { address, setUserDetailsContextState, userId } = useGlobalUserDetailsContext();
 
 	const [loading, setLoading] = useState<boolean>(false);
 
@@ -56,7 +56,7 @@ const BuyCredits = () => {
 	const toAddress = '0x491286D1907458c6446078a6462E7072EAcb8A7c';
 
 	const buyCredits = async () => {
-		if (!connectedWallet || !connectedWallet.address) return;
+		if (!connectedWallet || !connectedWallet.address || !userId) return;
 
 		if (!selectedPlan) return;
 
@@ -129,6 +129,7 @@ const BuyCredits = () => {
 			<PrimaryButton
 				onClick={onOpen}
 				className='w-full'
+				disabled={!userId}
 			>
 				Buy Credits
 			</PrimaryButton>

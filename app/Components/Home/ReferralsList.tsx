@@ -1,11 +1,15 @@
+'use client';
+
 import { useGlobalUserDetailsContext } from '@/providers/UserDetailsContext';
 import copyText from '@/utils/copyText';
-import { Button } from '@nextui-org/button';
 import { Skeleton } from '@nextui-org/skeleton';
 import Image from 'next/image';
 import React from 'react';
+import UserLoggedOut from '@/ui-components/UserLoggedOut';
+import SecondaryButton from '@/ui-components/SecondaryButton';
+import { MetaMaskAvatar } from 'react-metamask-avatar';
+import shortenAddress from '@/utils/shortenAddress';
 import RedeemPoints from './RedeemPoints';
-// import { MetaMaskAvatar } from 'react-metamask-avatar';
 
 const ReferralsList = () => {
 	const { referralCodes, userId, userLoading } = useGlobalUserDetailsContext();
@@ -23,39 +27,40 @@ const ReferralsList = () => {
 		>
 			<div className='font-recharge text-xl text-text_black mb-1'>Invites</div>
 			<div className='text-sm text-text_black mb-3'>Your invites will show up here</div>
-			<div className='flex flex-col gap-y-4 flex-1 overflow-y-auto'>
-				{userLoading ? (
-					<>
-						<div className='flex items-center gap-x-2'>
-							<Skeleton className='h-[30px] w-[30px] rounded-full' />
-							<Skeleton className='h-4 w-full rounded-lg' />
-						</div>
-						<div className='flex items-center gap-x-2'>
-							<Skeleton className='h-[30px] w-[30px] rounded-full' />
-							<Skeleton className='h-4 w-full rounded-lg' />
-						</div>
-						<div className='flex items-center gap-x-2'>
-							<Skeleton className='h-[30px] w-[30px] rounded-full' />
-							<Skeleton className='h-4 w-full rounded-lg' />
-						</div>
-					</>
-				) : (
-					userId && (
+			{userId ? (
+				<div className='flex flex-col gap-y-4 flex-1 overflow-y-auto'>
+					{userLoading ? (
+						<>
+							<div className='flex items-center gap-x-2'>
+								<Skeleton className='h-[30px] w-[30px] rounded-full' />
+								<Skeleton className='h-4 w-full rounded-lg' />
+							</div>
+							<div className='flex items-center gap-x-2'>
+								<Skeleton className='h-[30px] w-[30px] rounded-full' />
+								<Skeleton className='h-4 w-full rounded-lg' />
+							</div>
+							<div className='flex items-center gap-x-2'>
+								<Skeleton className='h-[30px] w-[30px] rounded-full' />
+								<Skeleton className='h-4 w-full rounded-lg' />
+							</div>
+						</>
+					) : (
 						<>
 							{redeemedCodes.map((item, i) => (
 								<div
 									className='flex items-center gap-x-2'
 									key={i}
 								>
-									<Image
-										src='/assets/avatar.png'
-										height={30}
-										width={30}
-										alt='avatar'
+									<MetaMaskAvatar
+										size={30}
+										address={item.usedBy?.address || ''}
 									/>
 									<div className='w-full'>
-										<p className='font-recharge text-sm mb-1 text-text_black flex items-center justify-between w-full gap-x-2'>
-											<span className='line-through'>{item.code}</span>
+										<p className='text-sm mb-1 text-text_black flex items-center justify-between w-full gap-x-2'>
+											<p>
+												<span className='font-recharge'>{shortenAddress(item.usedBy?.address || '')} </span>
+												<span className='text-text_grey text-xs'>referral redeemed</span>
+											</p>
 											{item.pointsEarned ? (
 												<span className='text-success text-xs font-recharge'>+{item.pointsEarned} pts</span>
 											) : (
@@ -83,34 +88,29 @@ const ReferralsList = () => {
 									key={i}
 								>
 									<Image
-										src='/assets/avatar.png'
+										src='/assets/ref-code-icon.png'
 										height={30}
 										width={30}
 										alt='avatar'
 									/>
-									<div>
-										<p className='font-recharge text-sm mb-1 text-text_black flex items-center'>
-											{item.code}
-											<Button
-												isIconOnly
-												onClick={() => copyText(item.code)}
-												className='p-0 bg-transparent border-none outline- h-auto'
-											>
-												<Image
-													src='/assets/copy-icon.png'
-													height={12}
-													width={12}
-													alt='copy'
-												/>
-											</Button>
-										</p>
+									<div className='flex items-center justify-between w-full'>
+										<p className='font-recharge text-sm mb-1 text-text_black'>{item.code}</p>
+										<SecondaryButton
+											size='sm'
+											onClick={() => copyText(item.code)}
+											className='px-4'
+										>
+											Copy
+										</SecondaryButton>
 									</div>
 								</div>
 							))}
 						</>
-					)
-				)}
-			</div>
+					)}
+				</div>
+			) : (
+				<UserLoggedOut />
+			)}
 		</div>
 	);
 };

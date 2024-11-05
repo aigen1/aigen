@@ -24,6 +24,7 @@ const NavHeader = () => {
 		credits,
 		points,
 		badges,
+		level,
 		setUserDetailsContextState
 	} = useGlobalUserDetailsContext();
 
@@ -38,7 +39,7 @@ const NavHeader = () => {
 	};
 
 	return (
-		<nav className='navbar px-12 h-[80px] flex items-center justify-between sticky top-0 left-0 z-20'>
+		<nav className='navbar px-12 h-[80px] flex items-center gap-x-10 sticky top-0 left-0 z-20'>
 			<div>
 				<Image
 					src='/assets/aigen-logo.png'
@@ -106,21 +107,24 @@ const NavHeader = () => {
 					/>
 				</Tabs>
 			</div>
+			<div className='flex-1' />
 			<div className='flex items-center h-full gap-x-4'>
-				<Button
-					className='new-chat-btn bg-primary_orange rounded-3xl text-white text-xs font-bold font-recharge px-6'
-					startContent={<span className='text-base'>+</span>}
-					onClick={() => router.push('/chat')}
-				>
-					New Chat
-				</Button>
 				{userId && (
-					<UserPoints
-						credits={credits}
-						points={points}
-						badges={badges}
-						small
-					/>
+					<>
+						<Button
+							className='new-chat-btn bg-primary_orange rounded-3xl text-white text-xs font-bold font-recharge px-6'
+							startContent={<span className='text-base'>+</span>}
+							onClick={() => router.push('/chat')}
+						>
+							New Chat
+						</Button>
+						<UserPoints
+							credits={credits}
+							points={points}
+							badges={badges}
+							small
+						/>
+					</>
 				)}
 				{userLoading ? (
 					<div className='flex items-center gap-x-2'>
@@ -151,7 +155,7 @@ const NavHeader = () => {
 								/>
 								<div className='flex flex-col font-recharge'>
 									<span className='text-white text-sm'>{shortenAddress(userAddress)}</span>
-									<span className='text-text_grey text-[10px]'>Lv 1</span>
+									<span className='text-text_grey text-[10px]'>Lv {level}</span>
 								</div>
 								<Image
 									src='/assets/arrow-down-white.png'

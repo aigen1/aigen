@@ -43,7 +43,7 @@ const RedeemPoints = ({ code, email }: { code: string; email?: string }) => {
 	return (
 		<div className='flex items-center gap-x-2'>
 			<Image
-				src='/assets/avatar.png'
+				src='/assets/ref-code-icon.png'
 				height={30}
 				width={30}
 				alt='avatar'

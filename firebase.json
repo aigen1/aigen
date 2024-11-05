@@ -1,6 +1,7 @@
 {
   "hosting": {
     "site" : "aigenlayer",
+    "runtime": "nodejs20",
     "source": ".",
     "ignore": [
       "firebase.json",
@@ -8,7 +9,9 @@
       "**/node_modules/**"
     ],
     "frameworksBackend": {
-      "region": "us-central1"
+      "region": "us-central1",
+      "memory": "4GiB",
+      "timeoutSeconds": 540
     }
   }
 }

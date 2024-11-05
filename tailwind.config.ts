@@ -23,6 +23,7 @@ const config: Config = {
 				primary_orange: 'var(--primary_orange)',
 				secondary_green: 'var(--secondary_green)',
 				secondary_orange: 'var(--secondary_orange)',
+				stroke_black: 'var(--stroke_black)',
 				success: 'var(--success)',
 				tab_bg_orange: 'var(--tab_bg_orange)',
 				text_black: 'var(--text_black)',
