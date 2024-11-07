@@ -3,26 +3,26 @@
 import RefCodeForm from '@/Components/SignupForm/RefCodeForm';
 import { useGlobalUserDetailsContext } from '@/providers/UserDetailsContext';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
+import Link from 'next/link';
+import { redirect } from 'next/navigation';
 import React, { Suspense, useEffect } from 'react';
 
 const SignupPage = () => {
-	const router = useRouter();
 	const { address, waiting } = useGlobalUserDetailsContext();
 
 	useEffect(() => {
 		if (!address || !waiting) {
-			router.push('/signup');
+			redirect('/signup');
 		}
-	}, [address, router, waiting]);
+	}, [address, waiting]);
 
 	return (
 		<section className='flex-1 flex justify-center items-start pt-[80px]'>
 			<div className='bg-white rounded-2xl drop-shadow min-w-[500px]'>
 				<div className='w-full p-4 flex items-center justify-between border-b border-border_grey'>
-					<button
+					<Link
 						className='border-none outline-none p-0'
-						onClick={() => router.back()}
+						href='/'
 					>
 						<Image
 							src='/assets/arrow-right.png'
@@ -31,7 +31,7 @@ const SignupPage = () => {
 							width={24}
 							className='rotate-[180deg]'
 						/>
-					</button>
+					</Link>
 					<span className='font-recharge text-2xl text-text_black'>In Waitlist</span>
 					<span />
 				</div>

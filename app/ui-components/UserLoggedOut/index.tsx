@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import React from 'react';
 import Link from 'next/link';
-import PrimaryButton from '../PrimaryButton';
 
 const UserLoggedOut = () => {
 	return (
@@ -13,8 +12,11 @@ const UserLoggedOut = () => {
 				alt='user logged out'
 			/>
 			<p className='text-text_black text-sm'>Please Login/Sign Up to use Aigen</p>
-			<Link href='/signup'>
-				<PrimaryButton>Sign Up</PrimaryButton>
+			<Link
+				className='bg-primary_orange rounded-xl text-white text-sm font-bold font-recharge px-8 py-3'
+				href='/signup'
+			>
+				Sign Up
 			</Link>
 		</div>
 	);

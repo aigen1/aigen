@@ -6,7 +6,7 @@ import { responseMessages } from '@/api/constants/response_messages';
 import { IChatDB } from '@/api/types/types';
 import { NextRequest, NextResponse } from 'next/server';
 import axios from 'axios';
-import { deductCreditsFromUser, eligibleToChat } from '@/api/api-utils/chatUtils';
+import { deductCreditsFromUser, eligibleToChat, getCreditsUsedByController } from '@/api/api-utils/chatUtils';
 
 // eslint-disable-next-line import/prefer-default-export
 export const POST = withErrorHandling(async (req: NextRequest) => {
@@ -28,7 +28,7 @@ export const POST = withErrorHandling(async (req: NextRequest) => {
 		if (!prompt || !controller || !llm)
 			return NextResponse.json({ error: responseMessages.missing_params }, { status: 404 });
 
-		const eligible = await eligibleToChat(validUser.userId, 20);
+		const eligible = await eligibleToChat(validUser.userId, getCreditsUsedByController(controller));
 
 		if (!eligible) {
 			return NextResponse.json(

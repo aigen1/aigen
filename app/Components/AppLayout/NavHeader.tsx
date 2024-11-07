@@ -4,19 +4,17 @@ import { initialUserDetailsContext, useGlobalUserDetailsContext } from '@/provid
 // import PrimaryButton from '@/ui-components/PrimaryButton';
 import UserPoints from '@/ui-components/UserPoints';
 import shortenAddress from '@/utils/shortenAddress';
-import { Button } from '@nextui-org/button';
 import { Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from '@nextui-org/dropdown';
 import { Skeleton } from '@nextui-org/skeleton';
 import { Tab, Tabs } from '@nextui-org/tabs';
 import { usePrivy } from '@privy-io/react-auth';
 import Image from 'next/image';
 import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import React, { useState } from 'react';
 
 const NavHeader = () => {
 	const pathname = usePathname();
-	const router = useRouter();
 	const {
 		address: userAddress,
 		userId,
@@ -111,13 +109,12 @@ const NavHeader = () => {
 			<div className='flex items-center h-full gap-x-4'>
 				{userId && (
 					<>
-						<Button
-							className='new-chat-btn bg-primary_orange rounded-3xl text-white text-xs font-bold font-recharge px-6'
-							startContent={<span className='text-base'>+</span>}
-							onClick={() => router.push('/chat')}
+						<Link
+							href='/chat'
+							className='new-chat-btn bg-primary_orange rounded-3xl text-white text-xs font-bold font-recharge px-6 py-3 flex items-center'
 						>
-							New Chat
-						</Button>
+							+ New Chat
+						</Link>
 						<UserPoints
 							credits={credits}
 							points={points}
